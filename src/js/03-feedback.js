@@ -14,9 +14,14 @@ formRef.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(e) {
   e.preventDefault();
-  console.log(formData);
-  e.target.reset();
-  localStorage.removeItem(LOCAL_STORAGE_PROPERTY);
+  if (formData.email !== '' && formData.message !== '') {
+    console.log(formData);
+    e.target.reset();
+    formData.email = '';
+    formData.message = '';
+
+    localStorage.removeItem(LOCAL_STORAGE_PROPERTY);
+  }
 }
 
 function onFormInput() {
